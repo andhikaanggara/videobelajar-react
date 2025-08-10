@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-main-primary: #3ecf4c;
+  --color-main-secondary: #ffbd3a;
+  --color-main-ternary: #f64920;
+  --color-textDark-primary: #222325;
+  --color-textDark-secondary: #333333ad;
+  --color-textDark-disabled: #3a354161;
+  --color-textLight-primary: #ffffff;
+  --color-textLight-secondary: #c1c2c4;
+  --color-textLight-disabled: #9d9ea1;
+  --color-other-primarybg: #ffffff;
+  --color-other-basebg: #f4f5fa;
+  --color-other-seconarybg: #f9fafc;
+  --color-other-border: #3a35411f;
+  --color-info-pressed: #044aa2;
+  --color-info-hover: #0663c2;
+  --color-info-default: #0980e2;
+  --color-info-background: #ebf9fe;
+  --color-success-pressed: #1C9675;
+  --color-success-hover: #28B380;
+  --color-success-default: #38D189;
+  --color-success-background: #E0FDDF;
+  --color-warning-pressed: #B5A40D;
+  --color-warning-hover: #D8C613;
+  --color-warning-default: #FCE91B;
+  --color-warning-background: #FCF8CA;
+  --color-error-pressed: #B72315;
+  --color-error-hover: #DB3D1F;
+  --color-error-default: #FF5C2B;
+  --color-error-background: #FCE3D1;
+  --color-gradients-info: ;
+  --color-gradients-succes: ;
+  --color-gradients-warning: ;
+  --color-gradients-error: ;
+  --color-greyscale-900: #212121;
+  --color-greyscale-800: #424242;
+  --color-greyscale-700: #616161;
+  --color-greyscale-600: #757575;
+  --color-greyscale-500: #9e9e9e;
+  --color-greyscale-400: #bdbdbd;
+  --color-greyscale-300: #e0e0e0;
+  --color-greyscale-200: #eeeeee;
+  --color-greyscale-100: #f5f5f5;
+  --color-greyscale-0: #fafafa;
+}
+
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+.font-poppins {
+  font-family: Poppins, sans-serif;
+}
