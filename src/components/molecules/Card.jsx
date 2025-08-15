@@ -38,14 +38,14 @@ export default function Card({
               className="w-[36px] h-[36px] object-cover rounded-lg"
             />
             <div>
-              <BodySmall className="font-medium md:text-base h-[20px]">
+              <BodyMedium className="font-medium md:text-base h-[20px]">
                 {tutorName}
-              </BodySmall>
-              <BodySmall className="text-xs md:text-base font-normal md:font-medium text-[#333333AD]">
+              </BodyMedium>
+              <BodySmall className="font-normal md:font-medium text-[#333333AD]">
                 {tutorTitle}
                 <span></span>
                 <span className="max-md:hidden">
-                  <span> </span>di{" "}
+                  <span> </span>{`di `}
                   <span className="font-bold"> {tutorSubTitle} </span>
                 </span>
               </BodySmall>
