@@ -19,8 +19,13 @@ export default function Dropdown({
           {showLogin && (
             <li
               className="py-3 px-5 cursor-pointer text-textDark-secondary 
-        hover:bg-other-basebg flex flex-col items-center gap-2"
+         flex flex-col items-center gap-2"
             >
+              <Link to="/semua-produk" className="w-full ">
+                <button className="text-left cursor-pointer mb-3">
+                  kategori
+                </button>
+              </Link>
               <Link to="/login" className="w-full text-center">
                 <Button>Login</Button>
               </Link>

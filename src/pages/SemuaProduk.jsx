@@ -8,7 +8,7 @@ import IconSearch from "../assets/icons/Search.png"
 import CardSection from "../components/organisms/CardSection"
 import Pagination from "../components/organisms/Pagination";
 
-export default function Home() {
+export default function Home({courses}) {
   const data = ["Harga Rendah", "Harga Tingga", "A to Z", "Z to A", "Rating Tertinggi", "Rating Terendah"]
 
   return (
@@ -39,7 +39,9 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <CardSection className={"md:max-h-[1230px] overflow-hidden"}/>
+                <CardSection 
+                courses={courses}
+                className={"md:max-h-[1230px] overflow-hidden"}/>
                 
                 <Pagination/>
             </div>

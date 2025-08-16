@@ -23,11 +23,13 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
         {/* Menu Section */}
         <div className="flex items-center gap-9">
           {/* Kategori butten for desktop*/}
-          <button className="cursor-pointer max-md:hidden">
-            <BodyMedium className={"text-[#333333AD] font-medium"}>
-              Kategori
-            </BodyMedium>
-          </button>
+          <Link to="/semua-produk">
+            <button className="cursor-pointer max-md:hidden">
+              <BodyMedium className={"text-[#333333AD] font-medium"}>
+                Kategori
+              </BodyMedium>
+            </button>
+          </Link>
 
           {/* right menu */}
           {isLoggedIn ? (

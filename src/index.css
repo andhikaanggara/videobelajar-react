@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @import "tailwindcss";
 
 @theme {
@@ -18,18 +20,18 @@
   --color-info-hover: #0663c2;
   --color-info-default: #0980e2;
   --color-info-background: #ebf9fe;
-  --color-success-pressed: #1C9675;
-  --color-success-hover: #28B380;
-  --color-success-default: #38D189;
-  --color-success-background: #E0FDDF;
-  --color-warning-pressed: #B5A40D;
-  --color-warning-hover: #D8C613;
-  --color-warning-default: #FCE91B;
-  --color-warning-background: #FCF8CA;
-  --color-error-pressed: #B72315;
-  --color-error-hover: #DB3D1F;
-  --color-error-default: #FF5C2B;
-  --color-error-background: #FCE3D1;
+  --color-success-pressed: #1c9675;
+  --color-success-hover: #28b380;
+  --color-success-default: #38d189;
+  --color-success-background: #e0fddf;
+  --color-warning-pressed: #b5a40d;
+  --color-warning-hover: #d8c613;
+  --color-warning-default: #fce91b;
+  --color-warning-background: #fcf8ca;
+  --color-error-pressed: #b72315;
+  --color-error-hover: #db3d1f;
+  --color-error-default: #ff5c2b;
+  --color-error-background: #fce3d1;
   --color-gradients-info: ;
   --color-gradients-succes: ;
   --color-gradients-warning: ;
@@ -44,15 +46,13 @@
   --color-greyscale-200: #eeeeee;
   --color-greyscale-100: #f5f5f5;
   --color-greyscale-0: #fafafa;
+  --font-dmSans: "DM Sans";
+  --font-poppins: Poppins;
 }
 
 /* font */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-body {
-  font-family: "DM Sans", sans-serif;
+html {
+  font-family: "DM Sans", poppins, sans-serif;
 }
-.font-poppins {
-  font-family: Poppins, sans-serif;
-}
+

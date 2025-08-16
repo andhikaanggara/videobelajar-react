@@ -1,10 +1,10 @@
-// src/App.jsx
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SemuaProduk from "./pages/SemuaProduk";
-import { useState } from "react";
+import DetailProduk from "./pages/DetailProduk";
 
 // assets - card
 import Card1 from "./assets/images/card1.jpg";
@@ -208,6 +208,17 @@ export default function App() {
             <SemuaProduk
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              courses={courses}
+            />
+          }
+        />
+        <Route
+          path="/detail/:id"
+          element={
+            <DetailProduk
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+              courses={courses}
             />
           }
         />
