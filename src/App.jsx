@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SemuaProduk from "./pages/SemuaProduk";
 import DetailProduk from "./pages/DetailProduk";
+import Admin from "./pages/Admin"
 
 // assets - card
 import Card1 from "./assets/images/card1.jpg";
@@ -31,7 +32,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // data course
-  const courses = [
+  const [courses,setCourses] = useState([
     {
       id: 1,
       category: "Pemasaran",
@@ -170,7 +171,7 @@ export default function App() {
       rating: "3.5",
       ratingCount: 86,
     },
-  ];
+  ]);
 
   console.log("status login:", isLoggedIn);
   console.log("users:", users);
@@ -219,6 +220,13 @@ export default function App() {
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               courses={courses}
+            />
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <Admin courses={courses} setCourses={setCourses}
             />
           }
         />

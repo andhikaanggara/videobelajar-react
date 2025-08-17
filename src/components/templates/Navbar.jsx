@@ -22,6 +22,15 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
 
         {/* Menu Section */}
         <div className="flex items-center gap-9">
+          {/* admin sesion */}
+          <Link to="/admin">
+            <button className="cursor-pointer max-md:hidden">
+              <BodyMedium className={"text-[#333333AD] font-medium"}>
+                Admin
+              </BodyMedium>
+            </button>
+          </Link>
+
           {/* Kategori butten for desktop*/}
           <Link to="/semua-produk">
             <button className="cursor-pointer max-md:hidden">

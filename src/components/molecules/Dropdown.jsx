@@ -21,6 +21,11 @@ export default function Dropdown({
               className="py-3 px-5 cursor-pointer text-textDark-secondary 
          flex flex-col items-center gap-2"
             >
+              <Link to="/admin" className="w-full ">
+                <button className="text-left cursor-pointer mb-3">
+                  Admin
+                </button>
+              </Link>
               <Link to="/semua-produk" className="w-full ">
                 <button className="text-left cursor-pointer mb-3">
                   kategori
