@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SemuaProduk from "./pages/SemuaProduk";
 import DetailProduk from "./pages/DetailProduk";
-import Admin from "./pages/Admin"
+import Admin from "./pages/Admin";
 
 // assets - card
 import Card1 from "./assets/images/card1.jpg";
@@ -32,7 +32,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // data course
-  const [courses,setCourses] = useState([
+  const defaultCourse = [
     {
       id: 1,
       category: "Pemasaran",
@@ -171,10 +171,16 @@ export default function App() {
       rating: "3.5",
       ratingCount: 86,
     },
-  ]);
+  ];
 
-  console.log("status login:", isLoggedIn);
-  console.log("users:", users);
+  const [courses, setCourses] = useState(() => {
+    const saved = localStorage.getItem("courses");
+    return saved ? JSON.parse(saved) : defaultCourse;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("courses", JSON.stringify(courses));
+  }, [courses]);
 
   return (
     <Router>
@@ -225,10 +231,7 @@ export default function App() {
         />
         <Route
           path="/admin"
-          element={
-            <Admin courses={courses} setCourses={setCourses}
-            />
-          }
+          element={<Admin courses={courses} setCourses={setCourses} />}
         />
       </Routes>
     </Router>

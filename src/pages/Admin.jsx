@@ -183,9 +183,11 @@ export default function Admin({ courses, setCourses }) {
               {editId ? "Update Kursus" : "Tambah Kursus"}
             </Button>
           </form>
+          </div>
 
+          <div className="rounded-xl bg-other-basebg border-other-border border p-4 flex flex-col gap-4 mt-6">
           {/* data kursusd */}
-          <h2 className="text-center border border-other-border rounded-xl py-4 mt-6 bg-white">
+          <h2 className="text-center border border-other-border rounded-xl py-4 bg-white">
             Daftar Kursus
           </h2>
           <div className="flex gap-2 w-full flex-wrap">
