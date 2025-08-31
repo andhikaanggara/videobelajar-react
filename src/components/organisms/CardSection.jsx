@@ -7,10 +7,9 @@ export default function CardSection({ className, courses }) {
 
   return (
     <div className={`${baseClass} ${className}`}>
-      {courses.map((course, index) => (
+      {courses.map((course) => (
         <Link key={course.id} to={`/detail/${course.id}`}>
           <Card
-            key={index}
             image={course.image}
             title={course.title}
             description={course.description}
