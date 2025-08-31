@@ -15,7 +15,7 @@ import FileEdit from "../assets/icons/File_Edit.png";
 import FileCerti from "../assets/icons/file-certificate.png";
 import Video from "../assets/icons/video.png";
 import World from "../assets/icons/world.png";
-import BioTutor from "../components/molecules/Biotutor";
+import BioTutor from "../components/molecules/BioTutor";
 import ChevronDown from "../assets/icons/Chevron_Down.png";
 import Rating from "../components/atoms/Rating";
 import Card from "../components/molecules/Card";
