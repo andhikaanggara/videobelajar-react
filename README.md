@@ -4,7 +4,7 @@
 This project implements **CRUD operations using Axios + Fake API (JSON Server)** and has been **deployed on Vercel**.
 ---
 
-##🚀 Tech Stack
+## 🚀 Tech Stack
 - ⚛️ **React 19.1**
 - 🎨 **Tailwind CSS 4.1**
 - 📡 **Axios** (CRUD with Fake API)
@@ -38,5 +38,6 @@ This project implements **CRUD operations using Axios + Fake API (JSON Server)**
 ---
 
 ## 📷 Preview
-![VideoBelajar Preview](https://via.placeholder.com/900x450.png?text=Preview+App+VideoBelajar)
+![VideoBelajar Preview](
+https://videobelajar-react-de088xll3-andhika-anggara-pratamas-projects.vercel.app/)
 ---
