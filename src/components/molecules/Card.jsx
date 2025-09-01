@@ -1,7 +1,7 @@
 import CardImg from "../atoms/CardImg";
 import BodyMedium from "../atoms/BodyMedium";
 import Rating from "../atoms/Rating";
-import BioTutor from "./Biotutor";
+import BioTutor from "./BioTutor";
 
 export default function Card({
   image,
