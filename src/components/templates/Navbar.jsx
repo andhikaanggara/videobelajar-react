@@ -13,7 +13,7 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
   ];
 
   return (
-    <nav className="w-full px-6 py-4 bg-white shadow-md">
+    <nav className="w-full px-6 py-4 bg-white shadow-md sticky top-0">
       <div className="max-w-[1242px] mx-auto px-5 flex gap-11 sm:gap-11 justify-between">
         {/* Logo */}
         <Link to="/">

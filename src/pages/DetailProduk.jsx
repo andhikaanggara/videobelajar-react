@@ -22,7 +22,12 @@ import Card from "../components/molecules/Card";
 
 export default function DetailProduk({ isLoggedIn, setIsLoggedIn, courses }) {
   const { id } = useParams();
-  const product = courses.find((c) => c.id === parseInt(id));
+  const product = courses.find((c) => String(c.id) === id);
+
+  if (!courses || courses.length === 0) {
+    return <p className="text-center mt-10">Loading data kursus...</p>;
+  }
+
   const related = courses.filter(
     (c) => c.category === product.category && c.id !== product.id
   );

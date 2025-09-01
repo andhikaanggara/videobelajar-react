@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import { getCourses } from "./sevices/api";
 
 import ApiDemo from "./pages/ApiDemo";
+import ScrollToTop from "./components/atoms/ScrollToTop";
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -32,6 +33,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/apidemo" element={<ApiDemo />} />
         <Route
