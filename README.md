@@ -38,6 +38,5 @@ This project implements **CRUD operations using Axios + Fake API (JSON Server)**
 ---
 
 ## 📷 Preview
-![VideoBelajar Preview](
-https://videobelajar-react-de088xll3-andhika-anggara-pratamas-projects.vercel.app/)
+https://videobelajar-react-de088xll3-andhika-anggara-pratamas-projects.vercel.app/
 ---
