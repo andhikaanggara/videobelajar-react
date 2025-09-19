@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchCourses } from "../store/redux/courseSlice";
 
 import Navbar from "../components/templates/Navbar";
 import Footer from "../components/templates/Footer";
@@ -20,7 +22,14 @@ import ChevronDown from "../assets/icons/Chevron_Down.png";
 import Rating from "../components/atoms/Rating";
 import Card from "../components/molecules/Card";
 
-export default function DetailProduk({ isLoggedIn, setIsLoggedIn, courses }) {
+export default function DetailProduk({ isLoggedIn, setIsLoggedIn }) {
+  const dispatch = useDispatch();
+  const { data: courses } = useSelector((state) => state.courses);
+
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
   const { id } = useParams();
   const product = courses.find((c) => String(c.id) === id);
 

@@ -1,49 +1,25 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SemuaProduk from "./pages/SemuaProduk";
 import DetailProduk from "./pages/DetailProduk";
 import Admin from "./pages/Admin";
-import { getCourses } from "./sevices/api";
-
-import ApiDemo from "./pages/ApiDemo";
 import ScrollToTop from "./components/atoms/ScrollToTop";
+import { useState } from "react";
 
 export default function App() {
   const [users, setUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // data course from api
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await getCourses();
-        setCourses(res.data);
-      } catch (err) {
-        console.log("Gagal fetch courses:", err);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/apidemo" element={<ApiDemo />} />
         <Route
           path="/"
           element={
-            <Home
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              courses={courses}
-            />
+            <Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
         <Route
@@ -66,7 +42,6 @@ export default function App() {
             <SemuaProduk
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
-              courses={courses}
             />
           }
         />
@@ -76,14 +51,10 @@ export default function App() {
             <DetailProduk
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
-              courses={courses}
             />
           }
         />
-        <Route
-          path="/admin"
-          element={<Admin courses={courses} setCourses={setCourses} />}
-        />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );

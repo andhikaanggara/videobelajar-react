@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCourses } from "../store/redux/courseSlice";
 
 import Navbar from "../components/templates/Navbar";
 import CardSection from "../components/organisms/CardSection";
@@ -8,18 +10,32 @@ import Footer from "../components/templates/Footer";
 import CardTitle from "../components/molecules/CardTitle";
 import TabMenu from "../components/molecules/TabMenu";
 
-export default function Home({ isLoggedIn, setIsLoggedIn, courses }) {
+export default function Home({ isLoggedIn, setIsLoggedIn }) {
+  const dispatch = useDispatch();
+  const {
+    data: courses,
+    loading,
+    error,
+  } = useSelector((state) => state.courses);
+
   // State actif category
   const [activeCategory, setActiveCategory] = useState("Semua Kelas");
 
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   // Filter
-  const filterCourses =
+  const filteredCourses =
     activeCategory === "Semua Kelas"
       ? courses
       : courses.filter((course) => course.category === activeCategory);
 
   return (
-    <div className="flex flex-col items-center gap-7 ">
+    <div className="flex flex-col items-center gap-7">
       <Navbar
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
@@ -35,7 +51,7 @@ export default function Home({ isLoggedIn, setIsLoggedIn, courses }) {
             activeCategory={activeCategory}
             onChangeCategory={setActiveCategory}
           />
-          <CardSection courses={filterCourses} />
+          <CardSection courses={filteredCourses} />
         </div>
 
         <BannerCTA />

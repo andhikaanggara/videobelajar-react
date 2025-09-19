@@ -1,105 +1,117 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCourses,
+  addCourse,
+  updateCourse,
+  deleteCourse,
+} from "../store/redux/courseSlice";
+
 import Navbar from "../components/templates/Navbar";
 import Card from "../components/molecules/Card";
 import Input from "../components/atoms/Input";
 import BodyLarge from "../components/atoms/BodyLarge";
 import Button from "../components/atoms/Button";
-import useCourses from "../hooks/useCourses";
 
 export default function Admin() {
-  const { courses, addCourse, updateCourse, deleteCourse } = useCourses();
+  const dispatch = useDispatch();
+  const { data: courses, loading } = useSelector((state) => state.courses);
 
-  //   data input data
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [tutorName, setTutorName] = useState("");
-  const [tutorTitle, setTutorTitle] = useState("");
-  const [tutorSubTitle, setTutorSubTitle] = useState("");
-  const [price, setPrice] = useState("");
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
+  //   form state
+  const [form, setForm] = useState({
+    title: "",
+    category: "",
+    description: "",
+    tutorName: "",
+    tutorTitle: "",
+    tutorSubTitle: "",
+    price: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   //   mode update data
   const [editId, setEditId] = useState(null);
 
-  //   funsi tambah atau update data
+  const resetForm = () => {
+    setForm({
+      title: "",
+      category: "",
+      description: "",
+      tutorName: "",
+      tutorTitle: "",
+      tutorSubTitle: "",
+      price: "",
+    });
+    setEditId(null);
+  };
+
+  //   funsi tambah & update data
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // fx tolak jika input kosong
-    if (
-      !title ||
-      !category ||
-      !description ||
-      !tutorName ||
-      !tutorTitle ||
-      !tutorSubTitle ||
-      !price
-    ) {
+    if (Object.values(form).some((val) => !val)) {
       alert("mohon isi semua");
       return;
     }
 
-    if (editId) {
-      // fx mode update
-      const updatedCourse = {
-        id: editId,
-        title,
-        category,
-        description,
-        tutorName,
-        tutorTitle,
-        tutorSubTitle,
-        price: `Rp ${price}K`,
-      };
-      await updateCourse(editId, updatedCourse);
-      setEditId(null);
-    } else {
-      // fungsi mode tambah
-      const newCourses = {
-        id: courses.length + 1,
-        title,
-        category,
-        description,
-        tutorName,
-        tutorTitle,
-        tutorSubTitle,
-        price: `Rp ${price}K`,
-        image: `https://picsum.photos/seed/course${courses.length + 1}/400/300`,
-        tutorImg: `https://randomuser.me/api/portraits/${
-          (courses.length + 1) % 2 === 0 ? "men" : "women"
-        }/${courses.length + 1}.jpg`,
-        rating: "4.9",
-        ratingCount: 56,
-      };
-      await addCourse(newCourses);
-    }
+    const payload = { ...form, price: `Rp ${form.price}K` };
 
-    // reset form
-    setTitle(""),
-      setCategory(""),
-      setDescription(""),
-      setTutorName(""),
-      setTutorTitle(""),
-      setTutorSubTitle("");
-    setPrice("");
+    try {
+      if (editId) {
+        // fx mode update
+        await dispatch(
+          updateCourse({ id: editId, updatedCourse: payload })
+        ).unwrap();
+      } else {
+        // fungsi mode tambah
+        await dispatch(
+          addCourse({
+            ...payload,
+            id: courses.length + 1,
+            image: `https://picsum.photos/seed/course${
+              courses.length + 1
+            }/400/300`,
+            tutorImg: `https://randomuser.me/api/portraits/${
+              (courses.length + 1) % 2 === 0 ? "men" : "women"
+            }/${courses.length + 1}.jpg`,
+            rating: "4.9",
+            ratingCount: 56,
+          })
+        ).unwrap();
+      }
+      resetForm();
+    } catch (error) {
+      console.error(Error);
+    }
   };
 
   const handleEdit = (id) => {
     const course = courses.find((c) => c.id === id);
     if (!course) return;
-    setTitle(course.title);
-    setCategory(course.category);
-    setDescription(course.description);
-    setTutorName(course.tutorName);
-    setTutorTitle(course.tutorTitle);
-    setTutorSubTitle(course.tutorSubTitle);
-    setPrice(course.price.replace("Rp ", "").replace("K", ""));
+    setForm({
+      title: course.title,
+      category: course.category,
+      description: course.description,
+      tutorName: course.tutorName,
+      tutorTitle: course.tutorTitle,
+      tutorSubTitle: course.tutorSubTitle,
+      price: course.price.replace("Rp ", "").replace("K", ""),
+    });
     setEditId(course.id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     if (!confirm("Yakeen ?")) return;
-    await deleteCourse(id);
+    dispatch(deleteCourse(id));
   };
 
   return (
@@ -120,63 +132,74 @@ export default function Admin() {
               <div className="flex justify-between gap-4">
                 <div>
                   <Input
+                    name="category"
                     placeholder={"Kategori"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    value={form.category}
+                    onChange={handleChange}
                   />
                   <Input
+                    name="title"
                     placeholder={"Judul"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={form.title}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
                   <Input
+                    name="price"
                     placeholder={"Harga"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    value={form.price}
+                    onChange={handleChange}
                   />
                   <Input
+                    name="tutorName"
                     placeholder={"Nama Tutor"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={tutorName}
-                    onChange={(e) => setTutorName(e.target.value)}
+                    value={form.tutorName}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
                   <Input
+                    name="tutorTitle"
                     placeholder={"Title Tutor"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={tutorTitle}
-                    onChange={(e) => setTutorTitle(e.target.value)}
+                    value={form.tutorTitle}
+                    onChange={handleChange}
                   />
                   <Input
+                    name="tutorSubTitle"
                     placeholder={"Tempat Kerja Tutor"}
                     className="border rounded-lg py-2 px-4"
                     type="text"
-                    value={tutorSubTitle}
-                    onChange={(e) => setTutorSubTitle(e.target.value)}
+                    value={form.tutorSubTitle}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
               <textarea
+                name="description"
                 placeholder={"Deskripsi"}
                 className="border border-other-border rounded-lg py-2 px-4 mb-6 bg-white"
                 type="textarea"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={form.description}
+                onChange={handleChange}
               />
             </div>
-            <Button type="sumbit">
-              {editId ? "Update Kursus" : "Tambah Kursus"}
+            <Button type="submit" disabled={loading}>
+              {loading
+                ? "Loading..."
+                : editId
+                ? "Update Kursus"
+                : "Tambah Kursus"}
             </Button>
           </form>
         </div>
@@ -191,7 +214,7 @@ export default function Admin() {
               <div key={course.id}>
                 <Card {...course} />
                 <div className="flex gap-2 pt-1 pb-4">
-                  <a href="#up">
+                  <a>
                     <button
                       className="px-4 py-2 bg-main-primary rounded-xl cursor-pointer"
                       onClick={() => handleEdit(course.id)}

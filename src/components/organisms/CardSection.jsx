@@ -3,7 +3,7 @@ import Card from "../molecules/Card";
 
 export default function CardSection({ className, courses }) {
   const baseClass =
-    "flex flex-col items-center gap-6 sm:flex-row sm:flex-wrap  sm:items-center sm:w-full";
+    "flex flex-col items-center gap-6 md:flex-row md:flex-wrap md:items-center";
 
   return (
     <div className={`${baseClass} ${className}`}>

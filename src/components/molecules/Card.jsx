@@ -17,7 +17,7 @@ export default function Card({
   ratingCount = 0,
 }) {
   return (
-    <div className="flex flex-col md:w-[384px] p-4 rounded-xl bg-[#FFFFFF] border border-[#3A35411F] gap-2">
+    <div className="flex flex-col w-[384px] md:w-[384px] p-4 rounded-xl bg-[#FFFFFF] border border-[#3A35411F] gap-2">
       <div className="flex gap-3 items-center md:flex-col md:gap-4">
         <CardImg src={image} />
         <div className=" flex-col flex md:gap-2">

@@ -7,11 +7,8 @@ const api = axios.create({
   },
 });
 
-export const getCourses = () => api.get("/courses");
-
-export const addCourse = (newCourses) => api.post("/courses", newCourses);
-
+export const getCourses = async () => api.get("/courses");
+export const addCourse = async (newCourses) => api.post("/courses", newCourses);
 export const updateCourse = (id, updatedCourse) =>
   api.put(`/courses/${id}`, updatedCourse);
-
 export const deleteCourse = (id) => api.delete(`/courses/${id}`);
