@@ -34,6 +34,8 @@ export default function Home({ isLoggedIn, setIsLoggedIn }) {
       ? courses
       : courses.filter((course) => course.category === activeCategory);
 
+  console.log("courses di Admin.jsx:", courses);
+
   return (
     <div className="flex flex-col items-center gap-7">
       <Navbar
