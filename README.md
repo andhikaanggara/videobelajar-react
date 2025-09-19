@@ -1,12 +1,42 @@
-# React + Vite
+🎓 VideoBelajar - Online Course Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**VideoBelajar** is a responsive web application built with **React + TailwindCSS**, designed as an online learning platform with professional tutors.  
+This project implements **CRUD operations using Axios + Fake API (JSON Server)** and has been **deployed on Vercel**.
+---
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
+- ⚛️ **React 19.1**
+- 🎨 **Tailwind CSS 4.1**
+- 📡 **Axios** (CRUD with Fake API)
+- 🌍 **React Router DOM**
+- 🔧 **Vite** (Bundler)
+- ☁️ **Vercel** (Deployment)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📌 Features
+### 🔐 Authentication
+- Login & Register functionality
+- State management with React Hooks
 
-## Expanding the ESLint configuration
+### 📚 Course Management
+- **Admin CRUD** (Create, Read, Update, Delete)
+- Add, update, and delete courses via API
+- Axios integration with fake JSON API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🖥️ Pages
+- **Home** → Landing page
+- **All Products** → Display all available courses
+- **Detail Product** → Detailed course page with related course recommendations
+- **Login & Register**
+- **Admin Dashboard**
+
+### 🎨 UI/UX
+- Fully responsive (mobile, tablet, desktop)
+- Sticky Navbar
+- Auto-scroll to top when navigating between pages
+- Consistent design implemented from Figma
+---
+
+## 📷 Preview
+https://videobelajar-react-de088xll3-andhika-anggara-pratamas-projects.vercel.app/
+---
